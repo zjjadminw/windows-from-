@@ -155,5 +155,41 @@ namespace 音乐播放器
         {
 
         }
+
+        private void yanz_chilck(object sender, EventArgs e)
+        {
+            Random rm = new Random();
+            string str = "";
+            for (int i = 0; i < 10; i++)
+            {
+                int num = rm.Next(0,10);
+                str += num;
+            }
+            Bitmap bmp = new Bitmap(920,90);
+            Graphics g = Graphics.FromImage(bmp);
+          
+            for (int i = 0; i < 10; i++)
+            {
+                Point p1 = new Point(i*30,0);
+                string[] fonts = {"微软雅黑","宋体","黑体","隶书","楷体" };
+                Color[] color = { Color.Red, Color.Blue, Color.Yellow, Color.Turquoise };
+                g.DrawString(str[i].ToString(),new Font(fonts[rm.Next(0,5)],80,FontStyle.Bold),new SolidBrush(color[rm.Next(0,4)]),p1);
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                Point p1 = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
+                Point p2 = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
+                g.DrawLine(new Pen(Brushes.Green), p1, p2);
+            }
+
+            for (int i = 0; i < 500; i++)
+            {
+                Point p = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
+                bmp.SetPixel(p.X, p.Y, Color.Black);
+            }
+            pictureBox1.Image = bmp;
+
+
+        }
     }
 }
