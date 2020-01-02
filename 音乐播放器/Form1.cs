@@ -137,9 +137,9 @@ namespace 音乐播放器
         {
             Graphics graphics = this.CreateGraphics();
             Pen pen = new Pen(Brushes.Red, 30);  //画笔
-            //Point p1 = new Point(500, 500);
-            //Point p2 = new Point(100, 100);
-            //graphics.DrawLine(pen, p1,p2);
+            Point p1 = new Point(500, 500);
+            Point p2 = new Point(100, 100);
+            graphics.DrawLine(pen, p1, p2);
             Size size=new System.Drawing.Size(80,80);
             Rectangle rec = new Rectangle(new Point(80, 80), size);
             graphics.DrawRectangle(pen,rec);
@@ -165,7 +165,7 @@ namespace 音乐播放器
                 int num = rm.Next(0,10);
                 str += num;
             }
-            Bitmap bmp = new Bitmap(920,90);
+            Bitmap bmp = new Bitmap(920,200);
             Graphics g = Graphics.FromImage(bmp);
           
             for (int i = 0; i < 10; i++)
@@ -175,7 +175,7 @@ namespace 音乐播放器
                 Color[] color = { Color.Red, Color.Blue, Color.Yellow, Color.Turquoise };
                 g.DrawString(str[i].ToString(),new Font(fonts[rm.Next(0,5)],80,FontStyle.Bold),new SolidBrush(color[rm.Next(0,4)]),p1);
             }
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 200; i++)
             {
                 Point p1 = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
                 Point p2 = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
@@ -185,7 +185,8 @@ namespace 音乐播放器
             for (int i = 0; i < 500; i++)
             {
                 Point p = new Point(rm.Next(0, bmp.Width), rm.Next(0, bmp.Height));
-                bmp.SetPixel(p.X, p.Y, Color.Black);
+                Color[] color = { Color.Red, Color.Blue, Color.Yellow, Color.Turquoise, Color.AntiqueWhite, Color.Beige };
+                bmp.SetPixel(p.X, p.Y, color[rm.Next(0, 4)]);
             }
             pictureBox1.Image = bmp;
 
